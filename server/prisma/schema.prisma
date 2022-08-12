@@ -65,3 +65,11 @@ model Product {
   orders      Order[]
   updatedAt   DateTime @updatedAt
 }
+
+model SupportTicket {
+  createdAt   DateTime @default(now())
+  description String
+  id          String   @id @default(cuid())
+  title       String
+  updatedAt   DateTime @updatedAt
+}
