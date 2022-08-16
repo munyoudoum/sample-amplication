@@ -12,8 +12,10 @@ export const SupportTicketShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
+        <TextField label="date" source="date" />
         <TextField label="description" source="description" />
         <TextField label="ID" source="id" />
+        <TextField label="room" source="room" />
         <TextField label="title" source="title" />
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
