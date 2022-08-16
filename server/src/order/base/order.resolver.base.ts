@@ -25,7 +25,6 @@ import { DeleteOrderArgs } from "./DeleteOrderArgs";
 import { OrderFindManyArgs } from "./OrderFindManyArgs";
 import { OrderFindUniqueArgs } from "./OrderFindUniqueArgs";
 import { Order } from "./Order";
-import { Customer } from "../../customer/base/Customer";
 import { Product } from "../../product/base/Product";
 import { OrderService } from "../order.service";
 
@@ -97,12 +96,6 @@ export class OrderResolverBase {
       data: {
         ...args.data,
 
-        customer: args.data.customer
-          ? {
-              connect: args.data.customer,
-            }
-          : undefined,
-
         product: args.data.product
           ? {
               connect: args.data.product,
@@ -127,12 +120,6 @@ export class OrderResolverBase {
         ...args,
         data: {
           ...args.data,
-
-          customer: args.data.customer
-            ? {
-                connect: args.data.customer,
-              }
-            : undefined,
 
           product: args.data.product
             ? {
@@ -170,22 +157,6 @@ export class OrderResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Customer, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Customer",
-    action: "read",
-    possession: "any",
-  })
-  async customer(@graphql.Parent() parent: Order): Promise<Customer | null> {
-    const result = await this.service.getCustomer(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

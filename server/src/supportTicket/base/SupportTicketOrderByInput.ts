@@ -34,6 +34,15 @@ class SupportTicketOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  date?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   description?: SortOrder;
 
   @ApiProperty({
@@ -44,6 +53,15 @@ class SupportTicketOrderByInput {
     nullable: true,
   })
   id?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  room?: SortOrder;
 
   @ApiProperty({
     required: false,
