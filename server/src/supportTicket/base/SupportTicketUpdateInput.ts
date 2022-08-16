@@ -11,9 +11,21 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { IsDate, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
 @InputType()
 class SupportTicketUpdateInput {
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  date?: Date | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -24,6 +36,17 @@ class SupportTicketUpdateInput {
     nullable: true,
   })
   description?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  room?: string | null;
 
   @ApiProperty({
     required: false,
