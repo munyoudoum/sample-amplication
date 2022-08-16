@@ -43,6 +43,15 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  Date?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   email?: SortOrder;
 
   @ApiProperty({
@@ -80,6 +89,15 @@ class CustomerOrderByInput {
     nullable: true,
   })
   phone?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  room?: SortOrder;
 
   @ApiProperty({
     required: false,
