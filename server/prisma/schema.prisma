@@ -32,16 +32,18 @@ model Order {
 }
 
 model Customer {
-  address   Address? @relation(fields: [addressId], references: [id])
+  address   Address?  @relation(fields: [addressId], references: [id])
   addressId String?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  Date      DateTime? @unique
   email     String?
   firstName String?
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   lastName  String?
   orders    Order[]
   phone     String?
-  updatedAt DateTime @updatedAt
+  room      Int?      @unique
+  updatedAt DateTime  @updatedAt
 }
 
 model Address {

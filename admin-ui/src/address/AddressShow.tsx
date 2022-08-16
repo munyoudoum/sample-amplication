@@ -39,11 +39,13 @@ export const AddressShow = (props: ShowProps): React.ReactElement => {
               <TextField source={ADDRESS_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="createdAt" label="Created At" />
+            <TextField label="Date" source="Date" />
             <TextField label="Email" source="email" />
             <TextField label="First Name" source="firstName" />
             <TextField label="ID" source="id" />
             <TextField label="Last Name" source="lastName" />
             <TextField label="Phone" source="phone" />
+            <TextField label="Room" source="room" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
